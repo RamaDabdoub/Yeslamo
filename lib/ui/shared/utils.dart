@@ -8,15 +8,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
-void customLoader() => BotToast.showCustomLoading(toastBuilder: (context) {
+ customLoader() => BotToast.showCustomLoading(toastBuilder: (context) {
       return Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 247, 103, 103).withOpacity(0.5),
-            borderRadius: BorderRadius.circular(10)),
+            color:Color.fromRGBO(79, 202, 255, 1).withOpacity(0.1),
+            borderRadius: BorderRadius.circular(50)),
         width: screenWidth(4),
         height: screenWidth(4),
         child: SpinKitCircle(
-          color: AppColors.graylightColor,
+          color:AppColors.skyblueColor,
           size: screenWidth(8),
         ),
       );
@@ -58,7 +58,7 @@ double screenHeight(double percent) {
 }
 
 SharedPrefrenceRepository get storage => Get.find<
-    SharedPrefrenceRepository>(); // الفايند بتتعامل مع النوع فبقلا روحي جيبيلي هاد الاوبجيكت
+    SharedPrefrenceRepository>(); 
 ConnectivitySerivce get connectivitySerivce => Get.find<ConnectivitySerivce>();
 Connectivity get connectivity => Get.find<Connectivity>();
 LocationService get locationService => Get.find<LocationService>();

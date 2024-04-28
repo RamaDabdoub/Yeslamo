@@ -20,17 +20,17 @@ class _SplashViewState extends State<SplashView> {
     return SafeArea(
       child: Scaffold(
         body: Stack(children: [
-          Image.asset(
-            'assets/images/pngs/main_background.png',
-            width: screenWidth(1),
-            fit: BoxFit.fitWidth,
-          ),
-          Center(
-            child: Image.asset(
-              'assets/images/pngs/logo.png',
-              width: screenWidth(1.8),
-            ),
-          ),
+          // Image.asset(
+          //   'assets/images/pngs/main_background.png',
+          //   width: screenWidth(1),
+          //   fit: BoxFit.fitWidth,
+          // ),
+          // Center(
+          //   child: Image.asset(
+          //     'assets/images/pngs/logo.png',
+          //     width: screenWidth(1.8),
+          //   ),
+          // ),
         ]),
       ),
     );

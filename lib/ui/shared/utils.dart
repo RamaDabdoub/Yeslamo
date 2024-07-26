@@ -64,4 +64,4 @@ Connectivity get connectivity => Get.find<Connectivity>();
 LocationService get locationService => Get.find<LocationService>();
 // CartService get cartserivce => Get.find<CartService>();
 
-bool isOnline = false;
+bool isOnline = true;

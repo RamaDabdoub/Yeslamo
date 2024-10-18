@@ -1,6 +1,6 @@
 enum MessageType {
-  INFO,
-  WARNING,
-  REJECTED,
-  SUCCSESS,
+  info,
+  warning,
+  rejected,
+  sucssess,
 }

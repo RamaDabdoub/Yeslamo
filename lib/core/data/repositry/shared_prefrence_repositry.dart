@@ -1,50 +1,49 @@
-import 'dart:convert';
-
 import 'package:empty_code/core/enums/data_type.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class SharedPrefrenceRepository {
   SharedPreferences pref = Get.find<SharedPreferences>();
 
   //!---- Keys  ------
 
-  String PREF_FIRST_LUNCH = 'first_lunch';
-  String PREF_IS_LOGGED = 'logged_in';
-  String PREF_LOGIN_INFO = 'login_info';
-  String PREF_TOKEN_INFO = 'token_info';
-  String PREF_APP_LANG = 'app_language';
-   String PREF_CART_LIST = 'cart_list';
+  String prefFirstLunch = 'first_lunch';
+  String prefIsLogged = 'logged_in';
+  String prefLoginInfo = 'login_info';
+  String prefTokenInfo = 'token_info';
+  String prefAppLang = 'app_language';
+  String prefCartList = 'cart_list';
 
   void setLoggedIn(bool value) {
-    setPrefrenc(type: DataType.BOOL, key: PREF_IS_LOGGED, value: value);
+    setPrefrenc(type: DataType.bool, key: prefIsLogged, value: value);
   }
 
   bool getLoggedIn() {
-    if (pref.containsKey(PREF_IS_LOGGED))
-      return getPrefrence(PREF_IS_LOGGED);
-    else
+    if (pref.containsKey(prefIsLogged)) {
+      return getPrefrence(prefIsLogged);
+    } else {
       return false;
+    }
   }
 
   void setFirstLunch(bool value) {
-    setPrefrenc(type: DataType.BOOL, key: PREF_FIRST_LUNCH, value: value);
+    setPrefrenc(type: DataType.bool, key: prefFirstLunch, value: value);
   }
 
   bool getFirstLunch() {
-    if (pref.containsKey(PREF_FIRST_LUNCH))
-      return getPrefrence(PREF_FIRST_LUNCH);
-    else
+    if (pref.containsKey(prefFirstLunch)) {
+      return getPrefrence(prefFirstLunch);
+    } else {
       return true;
+    }
   }
 
   // RememberMe getLoginInfo() {
   //   if (pref.containsKey(PREF_LOGIN_INFO))
   //   return RememberMe.fromJson(jsonDecode(getPrefrence(PREF_LOGIN_INFO)));
-  //   else 
+  //   else
   //    return RememberMe(username: '', password: '', rememberme: false);
-  
+
   // }
 
   // void setLoginInfo(RememberMe value) {
@@ -66,12 +65,12 @@ class SharedPrefrenceRepository {
   // }
 
   void setAppLanguage(String code) {
-    setPrefrenc(type: DataType.STRING, key: PREF_APP_LANG, value: code);
+    setPrefrenc(type: DataType.string, key: prefAppLang, value: code);
   }
 
   String getAppLanguage() {
-    if (pref.containsKey(PREF_APP_LANG)) {
-      return getPrefrence(PREF_APP_LANG);
+    if (pref.containsKey(prefAppLang)) {
+      return getPrefrence(prefAppLang);
     } else {
       return 'en';
     }
@@ -85,7 +84,7 @@ class SharedPrefrenceRepository {
 
   // List<CartModel> getCartList() {
   //   if (pref.containsKey(PREF_CART_LIST))
-    
+
   //     return CartModel.decode(getPrefrence(PREF_CART_LIST));
   //   else
   //     return [];
@@ -99,19 +98,19 @@ class SharedPrefrenceRepository {
     required dynamic value,
   }) async {
     switch (type) {
-      case DataType.INT:
+      case DataType.int:
         await pref.setInt(key, value);
         break;
-      case DataType.STRING:
+      case DataType.string:
         await pref.setString(key, value);
         break;
-      case DataType.BOOL:
+      case DataType.bool:
         await pref.setBool(key, value);
         break;
-      case DataType.DOUBLE:
+      case DataType.double:
         await pref.setDouble(key, value);
         break;
-      case DataType.LISTSTRING:
+      case DataType.liststring:
         await pref.setStringList(key, value);
         break;
     }

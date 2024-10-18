@@ -19,10 +19,10 @@ class MyAppController extends GetxController {
         //  شيكنا حالة الاتصال قبل اي تغييرcheckConnectivity
 // بتتغير حالة الاتصال لما المستخدم يطفي النت ويشغلو 
     connectivitySerivce.connectivityStatusController.add(status);
-    isOnline = status == ConnectivityStatus.ONLINE;
+    isOnline = status == ConnectivityStatus.online;
 
     connectivitySerivce.connectivityStatusController.stream.listen((event) {
-      isOnline = event == ConnectivityStatus.ONLINE;
+      isOnline = event == ConnectivityStatus.online;
 
       //! if (event == ConnectivityStatus.ONLINE)
       //!   isOnline.value = true;

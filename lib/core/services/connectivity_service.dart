@@ -22,19 +22,19 @@ class ConnectivitySerivce {
   ConnectivityStatus getStatus(ConnectivityResult result) {
     switch (result) {
       case ConnectivityResult.bluetooth:
-        return ConnectivityStatus.ONLINE;
+        return ConnectivityStatus.online;
       case ConnectivityResult.wifi:
-        return ConnectivityStatus.ONLINE;
+        return ConnectivityStatus.online;
       case ConnectivityResult.ethernet:
-        return ConnectivityStatus.ONLINE;
+        return ConnectivityStatus.online;
       case ConnectivityResult.mobile:
-        return ConnectivityStatus.ONLINE;
+        return ConnectivityStatus.online;
       case ConnectivityResult.none:
-        return ConnectivityStatus.OFFLINE;
+        return ConnectivityStatus.offline;
       case ConnectivityResult.vpn:
-        return ConnectivityStatus.ONLINE;
+        return ConnectivityStatus.online;
       case ConnectivityResult.other:
-        return ConnectivityStatus.ONLINE;
+        return ConnectivityStatus.online;
     }
   }
 }

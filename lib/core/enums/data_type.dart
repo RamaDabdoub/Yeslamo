@@ -1,7 +1,7 @@
 enum DataType {
-  INT,
-  STRING,
-  BOOL,
-  DOUBLE,
-  LISTSTRING,
+  int,
+  string,
+  bool,
+  double,
+  liststring,
 }

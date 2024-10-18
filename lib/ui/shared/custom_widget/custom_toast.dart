@@ -6,37 +6,35 @@ import 'package:empty_code/ui/shared/custom_widget/custom_text.dart';
 import 'package:empty_code/ui/shared/utils.dart';
 import 'package:flutter/material.dart';
 
-
-
 class CustomToast {
   static showMeassge({
     required String message,
-    MessageType messageType = MessageType.INFO,
+    MessageType messageType = MessageType.info,
   }) {
     String imageName = 'info';
     Color shadowColor = AppColors.navyColor;
 
     switch (messageType) {
-      case MessageType.INFO:
+      case MessageType.info:
         imageName = 'info';
         //    shadowColor = AppColors.blueColor;
         break;
-      case MessageType.WARNING:
+      case MessageType.warning:
         imageName = 'warning';
         //  shadowColor = AppColors.redColor;
         break;
-      case MessageType.REJECTED:
+      case MessageType.rejected:
         imageName = 'rejected-01';
         //shadowColor = AppColors.redColor;
         break;
-      case MessageType.SUCCSESS:
+      case MessageType.sucssess:
         imageName = 'approved1-01';
         //shadowColor = AppColors.grayColor;
         break;
     }
 
     BotToast.showCustomText(
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
         toastBuilder: (value) {
           return Container(
             padding: EdgeInsets.all(screenWidth(40)),
@@ -50,12 +48,12 @@ class CustomToast {
                     color: shadowColor.withOpacity(0.5),
                     spreadRadius: 5,
                     blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
+                    offset: const Offset(0, 3), // changes position of shadow
                   ),
                 ]),
             child: Customtext(
               text: message,
-              styleType: TextStyleType.SUBTITLE,
+              styleType: TextStyleType.subtitle,
               maxLines: 2,
             ),
           );

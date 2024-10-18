@@ -1,14 +1,13 @@
 import 'dart:convert';
+
 import 'package:bot_toast/bot_toast.dart';
 import 'package:empty_code/core/enums/request_type.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart' as path;
 import 'package:http_parser/http_parser.dart';
-
+import 'package:path/path.dart' as path;
 
 class NetworkUtil {
-   static String baseUrl = 'fakestoreapi.com';
+  static String baseUrl = 'fakestoreapi.com';
   // static String baseUrl = 'fakestoreapi.com';
 
   // static String baseUrl = 'jsonplaceholder.typicode.com';
@@ -24,16 +23,16 @@ class NetworkUtil {
     http.Response response;
 
     switch (type) {
-      case RequestType.GET:
+      case RequestType.get:
         response = await http.get(url, headers: headers);
         break;
-      case RequestType.POST:
+      case RequestType.post:
         response = await http.post(url, body: (body), headers: headers);
         break;
-      case RequestType.DELETE:
+      case RequestType.delete:
         response = await http.delete(url, body: (body), headers: headers);
         break;
-      case RequestType.PUT:
+      case RequestType.put:
         response = await http.put(url, body: (body), headers: headers);
         break;
     }
@@ -45,7 +44,7 @@ class NetworkUtil {
 
     Map<String, dynamic> jsonResponse = {};
     dynamic result;
-    String decodedBody = Utf8Codec().decode(response.bodyBytes);
+    String decodedBody = const Utf8Codec().decode(response.bodyBytes);
 
     try {
       result = jsonDecode(decodedBody);
@@ -70,19 +69,19 @@ class NetworkUtil {
   }) async {
     try {
       var request = http.MultipartRequest(
-          type.toString(), Uri.https(baseUrl, route, params));
+           type.toString().split('.').last, Uri.https(baseUrl, route, params));
 
-      var _filesKeyList = files!.keys.toList();
-      var _filesNameList = files.values.toList();
+      var filesKeyList = files!.keys.toList();
+      var filesNameList = files.values.toList();
 
-      for (int i = 0; i < _filesNameList.length; i++) {
-        if (_filesNameList[i].isNotEmpty) {
+      for (int i = 0; i < filesNameList.length; i++) {
+        if (filesNameList[i].isNotEmpty) {
           var multipartFile = http.MultipartFile.fromPath(
             //لح يجهز المسار لحتى يقدر يعملو ابلود عالسيرفر
-            _filesKeyList[i], //! image_profile
-            _filesNameList[i], //* File path
-            filename: path.basename(_filesNameList[i]),
-            contentType: getContentType(_filesNameList[i]),
+            filesKeyList[i], //! image_profile
+            filesNameList[i], //* File path
+            filename: path.basename(filesNameList[i]),
+            contentType: getContentType(filesNameList[i]),
           );
           request.files.add(await multipartFile);
         }

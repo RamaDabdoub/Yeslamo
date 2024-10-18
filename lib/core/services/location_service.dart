@@ -2,22 +2,22 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:empty_code/ui/shared/utils.dart';
 import 'package:geocoding/geocoding.dart' as geo;
 import 'package:location/location.dart';
-// اللوكيشن موجودي بالباكيج اللوكيشن وباكيج geo 
+// اللوكيشن موجودي بالباكيج اللوكيشن وباكيج geo
 
 class LocationService {
-  Location location = new Location();
+  Location location = Location();
 
   Future<LocationData?> getCurrentLocation({bool? showLoader = false}) async {
-    LocationData? _locationData;
+    LocationData? locationData;
     if (!await isServiceEnabled()) return null;
     if (!await isPermissionGranted()) return null;
 
     if (showLoader!) customLoader();
 
-    _locationData = await location.getLocation();
+    locationData = await location.getLocation();
     BotToast.closeAllLoading();
 
-    return _locationData;
+    return locationData;
   }
 
   Future<geo.Placemark?> getLocationInfo(LocationData locationData,
@@ -36,32 +36,32 @@ class LocationService {
   }
 
   Future<bool> isServiceEnabled() async {
-    bool _serviceEnabled;
+    bool serviceEnabled;
 
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
         //! --- Location is required ----
         return false;
       }
     }
 
-    return _serviceEnabled;
+    return serviceEnabled;
   }
 
   Future<bool> isPermissionGranted() async {
-    PermissionStatus _permissionGranted;
+    PermissionStatus permissionGranted;
 
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
         //!--- Permission required  --
         return false;
       }
     }
 
-    return _permissionGranted != PermissionStatus.denied;
+    return permissionGranted != PermissionStatus.denied;
   }
 }

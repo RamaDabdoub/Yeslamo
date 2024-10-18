@@ -9,7 +9,7 @@ class NetworkConfig {
       Map<String, String>? extraHeaders}) {
     return {
       // if (needAuth!) "Authorization": "Bearer ${storage.getTokenInfo().token}",
-      if (type != RequestType.GET) "Content-Type": "application/json",
+      if (type != RequestType.get) "Content-Type": "application/json",
       if (extraHeaders != null) ...extraHeaders,
       "Accept-Language": storage.getAppLanguage()
     };

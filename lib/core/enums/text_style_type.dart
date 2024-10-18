@@ -1,7 +1,7 @@
 enum TextStyleType {
-  TITLE,
-  SUBTITLE,
-  BODY,
-  SMALL,
-  CUSTOM,
+ title,
+  subtitle,
+  body,
+  small,
+  custom,
 }

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           connectivitySerivce.connectivityStatusController.stream,// هون انفتح الستريم وصار يعمل برودكاست على مستوى الابليكيشن
       // مابيقبل بدون قيمة بدائية مع انو متل قلتا
     //  لح ياخد اول قيمة لالو لما نفتح الستريم يعملو برودكاست وياخد القيمة الموجودة بقلبو
-      initialData: ConnectivityStatus.OFFLINE,
+      initialData: ConnectivityStatus.offline,
       child: GetMaterialApp(
           locale: getLocal(), //مسؤولي عن اتجاه الخط LTR RTL
           translations: AppTranslation(),
@@ -53,10 +53,12 @@ class MyApp extends StatelessWidget {
 Locale getLocal() {
   String langCode = storage.getAppLanguage();
 
-  if (langCode == 'ar')
-    return Locale('ar', 'SA');
-  else if (langCode == 'en')
-    return Locale('en', 'US');
-  else
-    return Locale('fr', 'FR');
+  if (langCode == 'ar') {
+    return const Locale('ar', 'SA');
+  } else if (langCode == 'en') {
+    return const Locale('en', 'US');
+  } else {
+    return const Locale('fr', 'FR');
+  }
 }
+
